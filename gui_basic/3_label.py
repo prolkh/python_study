@@ -4,7 +4,7 @@ root = Tk()
 root.title("GUI")
 root.geometry("650x480") # 가로 * 세로
 
-label1 = Label(root, text="안녕하세요")
+label1 = Label(root, text="안녕하세요") # div 와 같은 방식으로 사용
 label1.pack()
 
 photo = PhotoImage(file="D:\\python\\python_study\\gui_basic\\img.png")

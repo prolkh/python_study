@@ -5,9 +5,9 @@ root.title("GUI")
 
 
 btn1 = Button(root, text="버튼1")
-btn1.pack()
+btn1.pack() # pack()을 하지 않으면 root에 포함되지 않는다.
 
-btn2 = Button(root, padx=5, pady=10, text="버튼2")
+btn2 = Button(root, padx=5, pady=10, text="버튼2") # padx : 버튼 양 옆으로 padding, pady : 버튼 위 아래로 여백
 btn2.pack()
 
 btn3 = Button(root, padx=10, pady=5, text="버튼3")
@@ -16,17 +16,17 @@ btn3.pack()
 btn4 = Button(root, width=10, height=3,  text="버튼4")
 btn4.pack()
 
-btn5 = Button(root, fg="red", bg="yellow", text="버튼5")
+btn5 = Button(root, fg="red", bg="yellow", text="버튼5") # fg : 글자색, bg : 배경색
 btn5.pack()
 
-# photo = PhotoImage(file="img.png")
-# btn6 = Button(root, image=photo)
-# btn6.pack()
+photo = PhotoImage(file="python_study\\gui_basic\\img.png") # 상대 경로
+btn6 = Button(root, image=photo)
+btn6.pack()
 
 def btncmd():
     print("버튼이 클릭되었어요")
 
-btn7 = Button(root, text="동작하는 버튼", command=btncmd)
+btn7 = Button(root, text="동작하는 버튼", command=btncmd) # command 는 버튼이 클릭시 동작되는 함수
 btn7.pack()
 
 
