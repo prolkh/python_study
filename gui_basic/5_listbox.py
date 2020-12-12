@@ -4,8 +4,8 @@ root = Tk()
 root.title("GUI")
 root.geometry("650x480") # 가로 * 세로
 
-# html의 select 와 유사한 widget
-listbox = Listbox(root, selectmode="extended", height=0) # 다중 선택 가능
+# 사용자에게 옵션 목록을 제공하는데 사용되는 리스트박스
+listbox = Listbox(root, selectmode="extended", height=1) # 다중 선택 가능
 # listbox = Listbox(root, selectmode="single", height=0) # 하나만 선택 가능
 listbox.insert(0, "apple")
 listbox.insert(1, "strawberry")
