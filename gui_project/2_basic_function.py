@@ -1,4 +1,5 @@
 import tkinter.ttk as ttk
+import tkinter.messagebox as messagebox
 from tkinter import * # __all__
 from tkinter import filedialog
 
@@ -21,6 +22,32 @@ def del_file():
     # print(list_file.curselection())
     for index in reversed(list_file.curselection()): # 인덱스를 거꾸로 받아서 뒤에서부터 삭제
         list_file.delete(index)
+
+# 저장 경로 (폴더)
+def browse_dest_path():
+    folder_selected = filedialog.askdirectory()
+    if folder_selected == '': # 사용자가 취소를 누를 때
+        return
+    # print(folder_selected)
+    ent_dest_path.delete(0, END)
+    ent_dest_path.insert(0, folder_selected)
+
+# 실행!
+def start():
+    # 각 옵션들 값을 확인
+    print("가로넓이 : ", cmb_width.get())
+    print("간격 : ", cmb_space.get())
+    print("포맷 : ", cmb_format.get())
+
+    # 파일 목록 확인
+    if list_file.size() == 0 :
+        messagebox.showwarning("경고", "이미지 파일을 추가하세요")
+        return
+
+    # 저장 경로 확인
+    if len(ent_dest_path.get()) == 0 :
+        messagebox.showwarning("경고", "저장 경로를 선택하세요")
+        return
 
 # 파일 프레임(파일 추가, 선택 삭제)
 file_frame = Frame(root)
@@ -47,10 +74,10 @@ scrollbar.config(command=list_file.yview)
 path_frame = LabelFrame(root, text="저장 경로")
 path_frame.pack(fill="x", padx=5, pady=5, ipady=4)
 
-txt_dest_path = Entry(path_frame)
-txt_dest_path.pack(side="left", fill="x", expand=True, padx=5, pady=5, ipady=4) # 높이 변경
+ent_dest_path = Entry(path_frame)
+ent_dest_path.pack(side="left", fill="x", expand=True, padx=5, pady=5, ipady=4) # 높이 변경
 
-btn_dest_path = Button(path_frame, text="찾아보기", width=10)
+btn_dest_path = Button(path_frame, text="찾아보기", width=10, command=browse_dest_path)
 btn_dest_path.pack(side="right", padx=5, pady=5)
 
 # 옵션 프레임
@@ -102,7 +129,8 @@ frame_run.pack(fill="x", padx=5, pady=5)
 btn_close = Button(frame_run, text="닫기", padx=5, pady=5, width=12, command=root.quit)
 btn_close.pack(side="right")
 
-btn_start = Button(frame_run, text="시작", padx=5, pady=5, width=12)
+# 시작 버튼
+btn_start = Button(frame_run, text="시작", padx=5, pady=5, width=12, command=start)
 btn_start.pack(side="right", padx=5, pady=5)
 
 
