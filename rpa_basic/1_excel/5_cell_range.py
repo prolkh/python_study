@@ -74,4 +74,6 @@ print("------------(10) iter_cols 범위 지정---------")
 for col in ws.iter_cols(min_row=1, max_row=5, min_col=2, max_col=3):
     print(col)
 
+
+
 wb.save("sample.xlsx")
